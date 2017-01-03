@@ -407,23 +407,28 @@
 
 
 <!--Contact Starts-->
+<form action="https://postmail.invotes.com/send"
+    method="post" id="email_form">
 <div id="contact" class="spacer">
 
 <div class="container contactform center">
-<h2 class="text-center  wowload fadeInUp">Get in touch to start your project</h2>
+<h2 class="text-center  wowload fadeInUp">联系我们</h2>
   <div class="row wowload fadeInLeftBig">      
-      <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Company">
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
-      </div>
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+        <input type="text" name="subject" placeholder="主题" id="subject">  
+        <textarea rows="5" name="text" id="msg"></textarea>
+        <input type="hidden" name="access_token" value="hv6g7qjwunin6i8fu12shz2d" />
+        <input type="hidden" name="success_url" value="file:///Users/user/Documents/WorkSpace/Foshan_Nanxiang/index.html" />
+        <input type="hidden" name="error_url" value="file:///Users/user/Documents/WorkSpace/Foshan_Nanxiang/index.html" />
+        <input id="submit_form" type="submit" value="发送" style="background-color:#01a9c6;color:white"/>
+<!--         <button class="btn btn-primary" onclick="submit();"><i class="fa fa-paper-plane"></i> 发送</button>
+ -->      
+    </div>
   </div>
 
-
-
 </div>
 </div>
+<!-- </form> -->
 <!--Contact Ends-->
 
 
@@ -473,6 +478,28 @@
 
 <!-- custom script -->
 <script src="assets/script.js"></script>
+
+<script src="assets/smtp.js"></script>
+<!-- smtp -->
+
+<script>
+
+    var submitButton = document.getElementById("submit_form");
+    var form = document.getElementById("email_form");
+    form.addEventListener("submit", function (e) {
+        setTimeout(function() {
+            submitButton.value = "发送中...";
+            submitButton.disabled = true;
+        }, 1);
+
+        setTimeout(function() {
+            alert('发送成功');
+            submitButton.value = "发送";
+            submitButton.disabled = false;
+        }, 1000);
+    });
+
+</script>
 
 </body>
 </html>
